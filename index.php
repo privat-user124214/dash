@@ -7,7 +7,7 @@ include('config.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discord Login</title>
+    <title>Discord Login </title>
     <link rel="stylesheet" href="style.css"> <!-- Dein Style-Link -->
 </head>
 <body>
