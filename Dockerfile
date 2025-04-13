@@ -1,4 +1,4 @@
-# Aktiviert mod_rewrite (optional, für saubere URLs)
+# Aktiviert mod_rewrite (optional, für saubere URLs) 
 RUN a2enmod rewrite
 
 # Arbeitsverzeichnis im Container
