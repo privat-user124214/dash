@@ -60,7 +60,7 @@ if (isset($user['id'])) {
     ];
 
     // === DISCORD WEBHOOK LOGIN LOGGER ===
-    $webhook_url = 'https://discord.com/api/webhooks/1360952669174366228/OZK47yAq9DJxxFHAsdWpH1aHv7cbqwGptkXtjTK7TOAmJD-pDN3hMr5ok_CbdWBkbt6y';
+    $webhook_url = 'https://discord.com/api/webhooks/1360954499925278950/pveoTWeFUJTtXaX2sdLN9rA2CGvlQo9_k4cMtYQRsydaiApKJm5EVQxRmF_sDp5IpkiP';
 
     $embed = [
         "title" => "🔐 Neuer Dashboard Login",
