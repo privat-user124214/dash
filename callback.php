@@ -2,7 +2,7 @@
 session_start();
 
 $client_id = "1284484623279067196";
-$client_secret = "DEIN_CLIENT_SECRET";
+$client_secret = "rWr9kGV33-rTIvhv6ACi-NrJVxbQFQKy";
 $redirect_uri = "https://dash.novarix-studio.de/callback.php";
 
 if (!isset($_GET['code'])) {
