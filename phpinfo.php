@@ -1,3 +1,4 @@
 <?php
-phpinfo();
+require_once 'db.php';
+echo "Verbindung erfolgreich!";
 ?>
