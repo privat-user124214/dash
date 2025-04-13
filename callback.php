@@ -3,7 +3,7 @@ session_start();
 
 $client_id = "1284484623279067196";
 $client_secret = "rWr9kGV33-rTIvhv6ACi-NrJVxbQFQKy";
-$redirect_uri = "https://dash.novarix-studio.de/callback.php";
+$redirect_uri = "https://dash-k7s3.onrender.com/callback.php";
 
 if (!isset($_GET['code'])) {
     die("Kein Code erhalten.");
