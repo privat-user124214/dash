@@ -1,23 +1,54 @@
 <?php
-include 'config.php';
-$discord_url = "https://discord.com/oauth2/authorize?" . http_build_query([
-    'client_id'     => $client_id,
-    'redirect_uri'  => $redirect_uri,
-    'response_type' => 'code',
-    'scope'         => 'identify email connections guilds guilds.members.read'
-]);
+session_start();
+
+// Dummy-Daten für Server (später mit Discord API ersetzen)
+$servers = [
+    ["id" => "123", "name" => "Dev Server", "icon" => "https://via.placeholder.com/64", "bot" => true],
+    ["id" => "456", "name" => "Gaming Hub", "icon" => "https://via.placeholder.com/64", "bot" => false],
+    ["id" => "789", "name" => "Community", "icon" => "https://via.placeholder.com/64", "bot" => true],
+];
 ?>
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Login mit Discord</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body style="text-align: center; font-family: Arial, sans-serif; padding-top: 100px;">
-    <h1>Login Dashboard</h1>
-    <a href="<?= $discord_url ?>">
-        <img src="https://discord.com/assets/bb408e0343ddedc0967f246f7e89cebf.svg" alt="Login mit Discord" width="200">
-    </a>
-    <p>Klicke auf das Logo, um dich mit Discord anzumelden.</p>
+<body>
+    <header>
+        <div class="header-left">
+            <h1>Novarix Studio</h1>
+        </div>
+        <div class="header-right">
+            <a href="logout.php" class="logout-btn">Logout</a>
+        </div>
+    </header>
+
+    <main>
+        <h2>Serverübersicht</h2>
+        <div class="server-grid">
+            <?php foreach ($servers as $server): ?>
+                <div class="server-card">
+                    <img src="<?= $server['icon'] ?>" alt="Server Icon">
+                    <h3><?= htmlspecialchars($server['name']) ?></h3>
+                    <?php if ($server['bot']): ?>
+                        <a href="manage.php?server=<?= $server['id'] ?>" class="btn">Bot verwalten</a>
+                    <?php else: ?>
+                        <a href="invite.php?server=<?= $server['id'] ?>" class="btn btn-invite">Bot einladen</a>
+                    <?php endif; ?>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; <?= date("Y") ?> Novarix Studio</p>
+        <div class="footer-links">
+            <a href="#">Hauptseite</a> | <a href="#">Dokumentation</a>
+        </div>
+    </footer>
 </body>
 </html>
