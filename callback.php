@@ -40,6 +40,8 @@ if (!isset($token_data['access_token'])) {
 }
 
 $access_token = $token_data['access_token'];
+$_SESSION['access_token'] = $access_token;
+
 
 // Nutzerdaten abfragen
 $user_response = file_get_contents("https://discord.com/api/users/@me", false, stream_context_create([
