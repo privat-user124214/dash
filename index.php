@@ -7,4 +7,4 @@ $discord_url = "https://discord.com/oauth2/authorize?" . http_build_query([
     'scope'         => 'identify email connections guilds guilds.members.read'
 ]);
 ?>
-<a href="<?= $discord_url ?>">Mit Discord einloggen</a>
+<a href="<?= $discord_url ?>">Mit Discord einloggen </a>
