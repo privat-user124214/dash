@@ -1,10 +1,13 @@
 <?php
+// log_action.php
 require_once 'db.php';
 
-function logAction($serverId, $userId, $action) {
-    global $pdo;
+function logActivity($server_id, $user_id, $action, $details) {
+    global $conn;
 
-    $stmt = $pdo->prepare("INSERT INTO dashboard_logs (server_id, user_id, action, created_at) VALUES (?, ?, ?, NOW())");
-    $stmt->execute([$serverId, $userId, $action]);
+    $stmt = $conn->prepare("INSERT INTO logs (server_id, user_id, action, details, timestamp) VALUES (?, ?, ?, ?, NOW())");
+    $stmt->bind_param("ssss", $server_id, $user_id, $action, $details);
+    $stmt->execute();
+    $stmt->close();
 }
 ?>
