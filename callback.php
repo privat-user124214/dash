@@ -15,7 +15,7 @@ $token_url = "https://discord.com/api/oauth2/token";
 
 $data = [
     'client_id' => $client_id,
-    'client_secret' => $client_secret,
+    'client_secret' => rWr9kGV33-rTIvhv6ACi-NrJVxbQFQKy,
     'grant_type' => 'authorization_code',
     'code' => $code,
     'redirect_uri' => $redirect_uri,
