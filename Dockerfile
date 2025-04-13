@@ -1,10 +1,13 @@
 FROM php:8.2-apache
 
-# Aktiviert Apache Rewrite-Modul
+# Apache Rewrite aktivieren
 RUN a2enmod rewrite
 
-# Kopiert alle Dateien ins Webverzeichnis
+# Konfiguration für .htaccess erlauben
+RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
+
+# Dateien in Webverzeichnis kopieren
 COPY . /var/www/html/
 
-# Setzt Rechte (optional)
+# Eigentümer setzen
 RUN chown -R www-data:www-data /var/www/html
