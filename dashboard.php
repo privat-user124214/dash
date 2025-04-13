@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 if (!isset($_SESSION['user'])) {
     header("Location: index.php");
     exit();
@@ -12,31 +13,33 @@ $user = $_SESSION['user'];
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard – Novarix Studio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="header-left">
-            <h1>Novarix Studio</h1>
-        </div>
-        <div class="header-right">
-            <a href="logout.php" class="logout-btn">Logout</a>
-        </div>
-    </header>
+<header>
+    <h1>Novarix Dashboard</h1>
+    <nav>
+        <ul>
+            <li><a href="logout.php">Ausloggen</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <main>
+<main>
+    <section class="hero">
         <h2>Willkommen, <?= htmlspecialchars($user['username']) ?></h2>
-        <p>Du bist jetzt eingeloggt.</p>
-        <p><strong>E-Mail:</strong> <?= htmlspecialchars($user['email'] ?? 'Nicht verfügbar') ?></p>
-        <p><img src="<?= htmlspecialchars($user['avatar']) ?>" width="80" alt="Avatar"></p>
-    </main>
+        <p>Hier ist deine Server-Übersicht (funktion noch in Arbeit):</p>
+        <img src="<?= $user['avatar'] ?>" alt="Avatar" width="100" style="border-radius: 50%;">
+    </section>
+</main>
 
-    <footer>
-        <p>&copy; <?= date("Y") ?> Novarix Studio</p>
-        <div class="footer-links">
-            <a href="#">Hauptseite</a> | <a href="#">Dokumentation</a>
-        </div>
-    </footer>
+<footer>
+    <p>&copy; Novarix Studio</p>
+    <p>
+        <a href="https://novarix-studio.de" style="color: #a64eff;">Hauptseite</a> |
+        <a href="#" style="color: #a64eff;">Documentation</a>
+    </p>
+</footer>
 </body>
 </html>
