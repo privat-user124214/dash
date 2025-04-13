@@ -1,12 +1,14 @@
 <?php
-$host = "sql303.infinityfree.com";
-$dbname = "if0_38729105_logs";
-$username = "if0_38729105";
-$password = "p3Fuvu1gawZo";
+$host = 'dpg-cvtulfvgi27c73abb1s0-a.frankfurt-postgres.render.com';
+$db   = 'novarix_db';
+$user = 'novarix_db_user';
+$pass = 'CuPJkCvTCSm0zo0vR3pnGRGxtr0P6gzV';
+$port = "5432";
 
-$conn = new mysqli($host, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Verbindung fehlgeschlagen: " . $conn->connect_error);
+try {
+    $pdo = new PDO("pgsql:host=$host;port=$port;dbname=$db", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Verbindung fehlgeschlagen: " . $e->getMessage());
 }
 ?>
