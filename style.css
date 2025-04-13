@@ -1,0 +1,15 @@
+body {
+    background-color: #121212;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+main {
+    margin-left: 220px;
+    padding: 20px;
+}
+a {
+    color: #a64eff;
+}
+a:hover {
+    color: #822ed6;
+}
