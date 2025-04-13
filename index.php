@@ -1,31 +1,60 @@
 <?php
-// Discord OAuth Link
+// Discord OAuth2-Konfiguration
 $client_id = "1284484623279067196";
-$redirect_uri = urlencode("https://dash.novarix-studio.de/callback.php");
-$scope = "identify email connections guilds guilds.members.read";
+$redirect_uri = "https://dash.novarix-studio.de/callback.php";
 
-$discord_login_url = "https://discord.com/oauth2/authorize?client_id=$client_id&redirect_uri=$redirect_uri&response_type=code&scope=$scope";
+// OAuth2-URL ohne Bot-Scopes (kein Einladen des Bots)
+$discord_oauth_url = "https://discord.com/oauth2/authorize?" . http_build_query([
+    'client_id' => $client_id,
+    'redirect_uri' => $redirect_uri,
+    'response_type' => 'code',
+    'scope' => 'identify email connections guilds guilds.members.read'
+]);
 ?>
 
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Novarix Login</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Login mit Discord</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 120px;
+            margin: 0;
+        }
+        h1 {
+            color: #a64eff;
+        }
+        .login-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #5865F2;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .login-button:hover {
+            background-color: #4752c4;
+        }
+        .login-button img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="header-left"><h1>Novarix Studio</h1></div>
-    </header>
-    <main style="text-align: center; padding-top: 100px;">
-        <h2>Willkommen beim Novarix Dashboard</h2>
-<a href="https://discord.com/oauth2/authorize?client_id=1284484623279067196&permissions=0&response_type=code&redirect_uri=https%3A%2F%2Fdash.novarix-studio.de%2Fcallback.php&integration_type=0&scope=identify+email+connections+bot+guilds+applications.commands+guilds.members.read">
-    <img src="https://discord.com/assets/bb408e0343ddedc0967f246f7e89cebf.svg" alt="Login mit Discord" width="200">
-</a>
-
-        </a>
-        <p>Klicke auf das Discord-Logo, um dich anzumelden</p>
-    </main>
+    <h1>Willkommen beim NovaRix Dashboard</h1>
+    <a href="<?= htmlspecialchars($discord_oauth_url) ?>" class="login-button">
+        <img src="https://cdn.icon-icons.com/icons2/2108/PNG/512/discord_icon_130958.png" alt="Discord">
+        Mit Discord einloggen
+    </a>
 </body>
 </html>
